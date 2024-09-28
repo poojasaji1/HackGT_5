@@ -55,17 +55,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'marketPlace' %}">Market Place</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'marketplace_home' %}">Browse Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_product' %}">Add Products</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 
     <div class="container">
         {% block content %}
