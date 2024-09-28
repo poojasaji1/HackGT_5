@@ -1,22 +1,20 @@
 {% extends 'Leaf/base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Home Page!</h1>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'profile' %}">Profile</a>
-    <a href="{% url 'contact' %}">Contact</a>
-    <a href="{% url 'register' %}">Register</a>
-    <a href="{% url 'login' %}">Login</a>
 
-    <h2>Marketplace</h2>
-    <a href="{% url 'marketplace_home' %}">Browse Products</a>
-    <a href="{% url 'add_product' %}">Add a New Product</a>
+{% block content %}
+<h1>Browse Products</h1>
 
-
-</body>
-</html>
+{% if products %}
+    <ul>
+        {% for product in products %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: {{ product.price }}</p>
+                <p>Seller: {{ product.seller.user.username }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No products available.</p>
+{% endif %}
+{% endblock %}
