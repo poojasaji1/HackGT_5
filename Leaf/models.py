@@ -24,7 +24,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     eco_friendly = models.BooleanField(default=True)
     available = models.BooleanField(default=True)
-
+    carbon_footprint = models.BooleanField(default=False)
+    locally_made = models.BooleanField(default=False)
+    recyclable = models.BooleanField(default=False)
+    sustainable_packaging = models.BooleanField(default=False)
     # def __init__(self, *args, **kwargs):
     #     super().__init__(args, kwargs)
     #     self.user = None
