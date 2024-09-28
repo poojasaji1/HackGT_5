@@ -1,4 +1,4 @@
-{% extends 'Leafbase.html' %}
+{% extends 'Leaf/base.html' %}
 
 {% block content %}
 <h2>Create Seller Profile</h2>

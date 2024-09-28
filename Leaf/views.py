@@ -59,10 +59,11 @@ def add_product_view(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
+            seller = Seller.objects.get(user=request.user)
             product = form.save(commit=False)
             product.seller = request.user.seller
             product.save()
-            return redirect('marketplace_home')
+            return redirect('browse_products')
 
     else:
         form = ProductForm()
@@ -119,3 +120,11 @@ def create_seller_profile(request):
         form = SellerForm()
 
     return render(request, 'Leaf/create_seller_profile.html', {'form': form})
+
+from django.shortcuts import render
+from .models import Product
+
+def browse_products_view(request):
+    products = Product.objects.filter(available=True)
+    products = Product.objects.all()# Ensure you're filtering by availability if needed
+    return render(request, 'Leaf/browse_products.html', {'products': products})

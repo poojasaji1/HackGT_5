@@ -25,8 +25,11 @@ class Product(models.Model):
     eco_friendly = models.BooleanField(default=True)
     available = models.BooleanField(default=True)
 
-    def __str__(self):
-        return self.user.username
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(args, kwargs)
+    #     self.user = None
 
+    def __str__(self):
+        return f"{self.name} by {self.seller.user.username}"
 
 # Create your models here.
