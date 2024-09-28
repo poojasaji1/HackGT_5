@@ -51,7 +51,7 @@ class CustomUserCreationForm(UserCreationForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price', 'eco_friendly']
+        fields = ['name', 'description', 'price', 'eco_friendly', 'carbon_footprint', 'locally_made', 'recyclable', 'sustainable_packaging']
 
 class SellerForm(forms.ModelForm):
     class Meta:
