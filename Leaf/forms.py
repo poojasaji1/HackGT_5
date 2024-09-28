@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
-from .models import Product
+from .models import Product, Seller
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -52,3 +52,8 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'price', 'eco_friendly']
+
+class SellerForm(forms.ModelForm):
+    class Meta:
+        model = Seller
+        fields = ['bio', 'location']

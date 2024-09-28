@@ -47,8 +47,15 @@ from .forms import ProductForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
+from .models import Seller, Product
 @login_required(login_url='login')
 def add_product_view(request):
+    try:
+        seller = Seller.objects.get(user=request.user)
+    except Seller.DoesNotExist:
+        # Redirect to seller profile creation page or show an error message
+        return redirect('create_seller_profile')  # Replace with your actual URL name
+
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
@@ -94,3 +101,21 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'Leaf/login.html', {'form': form})
+
+from django.shortcuts import render, redirect
+from .models import Seller
+from .forms import SellerForm  # Assuming you have a SellerForm
+
+@login_required
+def create_seller_profile(request):
+    if request.method == 'POST':
+        form = SellerForm(request.POST)
+        if form.is_valid():
+            seller = form.save(commit=False)
+            seller.user = request.user
+            seller.save()
+            return redirect('add_product')  # Redirect to the add product page
+    else:
+        form = SellerForm()
+
+    return render(request, 'Leaf/create_seller_profile.html', {'form': form})
