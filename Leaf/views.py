@@ -19,6 +19,10 @@ def register(request):
 
 def home(request):
     return render(request, 'Leaf/home.html')
+def profile(request):
+    return render(request, 'Leaf/profile.html')
+def marketPlace(request):
+    return render(request, 'Leaf/marketPlace.html')
 
 def about(request):
     return render(request, 'Leaf/about.html')
