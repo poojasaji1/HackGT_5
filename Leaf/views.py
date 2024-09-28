@@ -8,3 +8,6 @@ def about(request):
 
 def contact(request):
     return render(request, 'Leaf/contact.html')
+
+def register(request):
+    return render(request, 'Leaf/register.html')
