@@ -13,6 +13,8 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Registration successful! You can now log in.')
+            return redirect('home')
     else:
         form = CustomUserCreationForm()
     return render(request, 'Leaf/register.html', {'form': form})
@@ -82,6 +84,8 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Welcome, {username}!')
+                return redirect('home')
+
                 # go to settings.py to change redirect behavior after login
             else:
                 messages.error(request, 'Invalid username or password.')
