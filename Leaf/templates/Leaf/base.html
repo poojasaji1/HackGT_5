@@ -13,7 +13,6 @@
     <style>
         .navbar {
             color: white;
-            background-color: #fff;
         }
 
         .navbar-nav {
@@ -35,7 +34,7 @@
             color: rgb(51, 148, 19);
         }
         .filter-dropdown {
-            margin-right: 20px;
+            margin-right: 5px;
         }
         /* Updated CSS to make the filter button green */
         .btn.btn-secondary.dropdown-toggle {
@@ -63,7 +62,9 @@
 <nav class="navbar navbar-expand-lg d-flex align-items-center">
     <div class="container-fluid d-flex justify-content-between">
         <!-- Brand -->
-        <a class="navbar-brand" href="{% url 'home' %}">Leaf & Loom</a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="% static 'images/logo.png' %" alt="Icon"> <!-- Placeholder for icon image link -->
+            Leaf & Loom</a>
 
         <!-- Filter Dropdown -->
         <div class="filter-dropdown">
