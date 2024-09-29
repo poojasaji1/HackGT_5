@@ -1,22 +1,117 @@
 {% extends 'Leaf/base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Home Page!</h1>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'profile' %}">Profile</a>
-    <a href="{% url 'contact' %}">Contact</a>
-    <a href="{% url 'register' %}">Register</a>
-    <a href="{% url 'login' %}">Login</a>
 
-    <h2>Marketplace</h2>
-    <a href="{% url 'marketplace_home' %}">Browse Products</a>
-    <a href="{% url 'add_product' %}">Add a New Product</a>
+{% block content %}
+  <style>
+      /* Apply a light beige background to the entire page */
+      body {
+          margin: 0;
+          padding: 0;
+          background-color: #F5F5DC; /* Light beige color */
+          font-family: 'Patrician', serif;
+      }
 
+      /* Center the text horizontally and vertically with some offset */
+      .centered-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start; /* Align items to the left */
+          height: 30vh; /* Reduce the height further to move the text up */
+          padding-top: 5vh; /* Optional: Adjust padding for more control */
+          padding-left: 5%; /* Indent the content from the left */
+          text-align: left; /* Align text to the left */
+          animation: fadeIn 2s ease-in-out; /* Add fade-in animation */
+      }
 
-</body>
-</html>
+      /* Light sage green color for eco-friendly */
+      .forest-green {
+          color: #4F7942;
+      }
+
+      h1 {
+          font-size: 3em; /* Increase font size for main heading */
+          margin-left: 5px; /* Indent the main heading */
+          color: rgb(101, 67, 33);
+      }
+
+      h2 {
+          font-size: 2em; /* Increase font size for subheading */
+          margin-left: 5px; /* Indent the subheading */
+      }
+
+      /* Fade-in animation */
+      @keyframes fadeIn {
+          0% {
+              opacity: 0;
+          }
+          100% {
+              opacity: 1;
+          }
+      }
+
+      /* Gallery Styles */
+      .gallery-container {
+          display: flex;
+          overflow-x: auto; /* Enable horizontal scrolling */
+          padding: 20px;
+          gap: 15px; /* Space between frames */
+      }
+
+      .image-frame {
+          flex: 0 0 auto; /* Prevent frames from shrinking */
+          width: 200px; /* Set width of each frame */
+          height: 200px; /* Set height of each frame */
+          border: 5px solid #4F7942; /* Frame border color */
+          border-radius: 10px; /* Rounded corners */
+          overflow: hidden; /* Hide overflow for image */
+          display: flex;
+          align-items: center; /* Center image vertically */
+          justify-content: center; /* Center image horizontally */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+      }
+
+      .image-frame img {
+          width: 100%; /* Make image fill the frame */
+          height: auto; /* Maintain aspect ratio */
+      }
+
+      /* Hide scrollbar in the gallery */
+      .gallery-container::-webkit-scrollbar {
+          display: none; /* Hide scrollbar for webkit browsers */
+      }
+      .gallery-container {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+      }
+  </style>
+
+  <div class="centered-content">
+      <h1>Welcome to Leaf & Loom
+          <span class="eco-icon" style="font-size: 1.0em;">🌱</span>
+      </h1>
+      <h2>Where we weave <span class="forest-green">eco-friendly</span> communities together</h2>
+  </div>
+
+  <div class="gallery-container">
+      <div class="image-frame">
+          <img src="/media/products/tote.png" alt="Image 1">
+      </div>
+      <div class="image-frame">
+          <img src="/media/products/basket.png" alt="Image 2">
+      </div>
+      <div class="image-frame">
+          <img src="/media/products/bottle.png" alt="Image 3">
+      </div>
+      <div class="image-frame">
+          <img src="/media/products/shampoo.png" alt="Image 4">
+      </div>
+      <div class="image-frame">
+          <img src="/media/products/shoe.png" alt="Image 5">
+      </div>
+       <div class="image-frame">
+          <img src="/media/products/shirt.png" alt="Image 6">
+      </div>
+      <!-- Add more image frames as needed -->
+  </div>
+
+{% endblock %}

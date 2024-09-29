@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: 'Patrician', serif;
+        }
+
+        .checkout-container {
+            background-color: #E7F0E4;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4F7942; /* Updated to forest green */
+            font-family: 'Patrician', serif;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .checkout-button:hover {
+            background-color: #446838; /* Slightly darker shade for hover effect */
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkout-container">
+    <h1>Checkout</h1>
+    <p>You purchased the product: {{ product.name }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Seller: {{ product.seller.user.username }}</p>
+
+    <button class="checkout-button" onclick="window.location.href='{% url 'browse_products' %}'">Return to Browsing</button>
+</div>
+
+</body>
+</html>

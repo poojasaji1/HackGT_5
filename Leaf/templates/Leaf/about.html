@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{% extends 'Leaf/base.html' %}
+
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +9,7 @@
 </head>
 <body>
     <h1>Welcome to the About Page!</h1>
-    <a href="{% url 'about' %}">About</a>
-    <a href="{% url 'contact' %}">Contact</a>
-<a href="{% url 'register' %}">Register</a>
+
 </body>
 </html>
+{% endblock %}

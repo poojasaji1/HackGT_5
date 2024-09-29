@@ -12,64 +12,155 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         .navbar {
-
             color: white;
         }
+
+        .navbar-nav {
+            margin-left: 10%;
+        }
+        .form-control {
+            width: 300px;
+        }
         .nav-item {
-            padding:5px 10px;
-            background-color: rgb(51, 148, 19);
+            padding: 5px 10px;
+            background-color: #4F7942;
             border-radius: 15px;
             margin: 5px;
-         }
+        }
         .nav-link {
             color: white;
         }
+        .navbar-brand {
+            color: #4F7942;
+        }
+        .filter-dropdown {
+            margin-right: 5px;
+            margin-left: 3%;
+        }
+        /* Updated CSS to make the filter button green */
+        .btn.btn-secondary.dropdown-toggle {
+            background-color: #4F7942;
+            border-color: #4F7942;
+        }
+        /* Style the Apply Filters button */
+        .btn-apply-filters {
+            background-color: #4F7942;
+            border-color: #4F7942;
+            color: white;
+        }
 
-        .navbar-brand{
-            color:  rgb(51, 148, 19);
+        /* Custom CSS to make the dropdown appear on hover */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            margin-top: 0; /* Ensure the dropdown appears right below the item */
+        }
+        .navbar-icon {
+            width: 30px;
+            height: 30px;
+        }
+        .brand-text {
+            color: rgb(101, 67, 33); /* This is a shade of brown (SaddleBrown) */
+        }
+        .navbar-icon {
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+            margin-right: 5px; /* Adds some space between the icon and text */
+        }
+        .btn-custom-green {
+            color: #4F7942;
+            border-color: #4F7942;
+            background-color: transparent;
+        }
+
+        .btn-custom-green:hover {
+            color: white;
+            background-color: #4F7942;
+            border-color: #4F7942;
         }
 
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Leaf & Loom</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+
+<nav class="navbar navbar-expand-lg d-flex align-items-center">
+    <div class="container-fluid d-flex justify-content-between">
+        <!-- Brand -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="/media/products/logo.png" alt="Icon" class="navbar-icon">
+            <span class="brand-text">Leaf & Loom</span></a>
+
+        <!-- Filter Dropdown -->
+        <div class="filter-dropdown">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter Products
+                </button>
+
+                <ul class="dropdown-menu p-3" aria-labelledby="filterDropdown">
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="carbonFootprint" name="carbon_footprint">
+                        <label class="form-check-label" for="carbonFootprint">Low Carbon Footprint</label>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="recyclable" name="recyclable">
+                        <label class="form-check-label" for="recyclable">Recyclable</label>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="sustainablePackaging" name="sustainable_packaging">
+                        <label class="form-check-label" for="sustainablePackaging">Sustainable Packaging</label>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="locallyMade" name="locally_made">
+                        <label class="form-check-label" for="locallyMade">Locally Made</label>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'marketPlace' %}">Market Place</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <li>
+                        <button class="btn btn-apply-filters mt-2" type="submit">Apply Filters</button>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
+
+        <!-- Search Bar -->
+        <form class="d-flex search-bar" role="search" method="GET" action="{% url 'browse_products' %}">
+            <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">
+            <button class="btn btn-custom-green" type="submit">Search</button>
+        </form>
+
+        <!-- Navbar Links -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+
+                <!-- Market Place Dropdown (Hover) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="marketplaceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Market Place
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="marketplaceDropdown">
+                        <li><a class="dropdown-item" href="{% url 'browse_products' %}">Browse</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
 
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+
+            </ul>
+        </div>
     </div>
-</body
+</nav>
+<div class="container mt-4">
+    {% block content %}
+    <!-- This is where the content of individual pages will be injected -->
+    {% endblock %}
+</div>
+</body>
 </html>
