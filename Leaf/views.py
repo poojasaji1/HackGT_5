@@ -128,3 +128,9 @@ def browse_products_view(request):
     products = Product.objects.filter(available=True)
     products = Product.objects.all()# Ensure you're filtering by availability if needed
     return render(request, 'Leaf/browse_products.html', {'products': products})
+from django.shortcuts import render, get_object_or_404
+from .models import Product  # Assuming your product model is named Product
+
+def checkout_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'Leaf/checkout.html', {'product': product})

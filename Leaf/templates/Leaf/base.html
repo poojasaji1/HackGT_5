@@ -13,13 +13,14 @@
     <style>
         .navbar {
             color: white;
+            background-color: #fff;
         }
+
         .navbar-nav {
             margin-left: 5%;
         }
         .form-control {
-            margin-left: 5%;
-            width: 500px;
+            width: 300px;
         }
         .nav-item {
             padding: 5px 10px;
@@ -33,20 +34,78 @@
         .navbar-brand {
             color: rgb(51, 148, 19);
         }
+        .filter-dropdown {
+            margin-right: 20px;
+        }
+        /* Updated CSS to make the filter button green */
+        .btn.btn-secondary.dropdown-toggle {
+            background-color: rgb(51, 148, 19);
+            border-color: rgb(51, 148, 19);
+        }
+        /* Style the Apply Filters button */
+        .btn-apply-filters {
+            background-color: rgb(51, 148, 19);
+            border-color: rgb(51, 148, 19);
+            color: white;
+        }
+
+        /* Custom CSS to make the dropdown appear on hover */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            margin-top: 0; /* Ensure the dropdown appears right below the item */
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg d-flex align-items-center">
+    <div class="container-fluid d-flex justify-content-between">
+        <!-- Brand -->
         <a class="navbar-brand" href="{% url 'home' %}">Leaf & Loom</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
+        <!-- Filter Dropdown -->
+        <div class="filter-dropdown">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter Products
+                </button>
+
+                <ul class="dropdown-menu p-3" aria-labelledby="filterDropdown">
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="carbonFootprint" name="carbon_footprint">
+                        <label class="form-check-label" for="carbonFootprint">Low Carbon Footprint</label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="recyclable" name="recyclable">
+                        <label class="form-check-label" for="recyclable">Recyclable</label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="sustainablePackaging" name="sustainable_packaging">
+                        <label class="form-check-label" for="sustainablePackaging">Sustainable Packaging</label>
+                    </li>
+                    <li class="form-check">
+                        <input class="form-check-input" type="checkbox" value="True" id="locallyMade" name="locally_made">
+                        <label class="form-check-label" for="locallyMade">Locally Made</label>
+                    </li>
+                    <li>
+                        <button class="btn btn-apply-filters mt-2" type="submit">Apply Filters</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
         <form class="d-flex search-bar" role="search" method="GET" action="{% url 'browse_products' %}">
             <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+
+        <!-- Navbar Links -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
@@ -54,17 +113,27 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'marketPlace' %}">Market Place</a></li>
+
+                <!-- Market Place Dropdown (Hover) -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="marketplaceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Market Place
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="marketplaceDropdown">
+                        <li><a class="dropdown-item" href="{% url 'browse_products' %}">Browse</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a></li>
+                    </ul>
+                </li>
+
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
-<div class="container">
+<div class="container mt-4">
     {% block content %}
+    <!-- This is where the content of individual pages will be injected -->
     {% endblock %}
 </div>
-
 </body>
 </html>

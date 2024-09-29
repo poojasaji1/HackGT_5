@@ -16,4 +16,8 @@ urlpatterns = [
     path('create-seller-profile/', views.create_seller_profile, name='create_seller_profile'),
     path('browse/', views.browse_products_view, name='browse_products'),
 
+    # Other URL patterns...
+    path('checkout/<int:product_id>/', views.checkout_view, name='checkout'),
+
+
 ]
