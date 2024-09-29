@@ -6,6 +6,21 @@
     input {
         width: 100%;
     }
+    body {
+          margin: 0;
+          padding: 0;
+          background-color: ivory; /* Light beige color */
+          font-family: 'Patrician', serif;
+    }
+    .btn-custom-green {
+        background-color: rgb(51, 148, 19);
+        border-color: rgb(51, 148, 19);
+        color: white;
+    }
+    .btn-custom-green:hover {
+        background-color: rgb(45, 130, 17);
+        border-color: rgb(45, 130, 17);
+    }
 </style>
 
 <div class="row justify-content-center mt-5">
@@ -36,7 +51,7 @@
                 {{ form.password }}
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Login</button> <!--TECH DEBT: put css for line below in a css file eventually -->
+                <button type="submit" class="btn btn-custom-green">Login</button> <!--TECH DEBT: put css for line below in a css file eventually -->
             </div>
 
         </form>

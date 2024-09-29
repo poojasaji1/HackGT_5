@@ -1,59 +1,75 @@
-{%  extends 'Leaf/base.html' %}
+{% extends 'Leaf/base.html' %}
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-6">
-        <h2 class="text-center mb-4">Register</h2>
+<style>
+    body {
+        background-color: ivory;
+        font-family: 'Patrician', serif;
+    }
+    .register-container {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .btn-custom-green {
+        background-color: rgb(51, 148, 19);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    .btn-custom-green:hover {
+        background-color: rgb(45, 130, 17);
+    }
+</style>
 
-        <!-- Display form errors -->
-        {% if form.errors %}
-            <div class="alert alert-danger mt-3">
-                <ul>
-                    {% for field, errors in form.errors.items %}
-                        <li>{{ field }}: {{ errors|striptags }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+<div class="register-container">
+    <h2>Register</h2>
 
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                {{ form.username.label_tag }}
-                {{ form.username }}
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
             </div>
-            <div class="mb-3">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
-            <div class="mb-3">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-            </div>
-            <div class="mb-3">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-            </div>
-            <div class="mb-3">
-                {{ form.address.label_tag }}
-                {{ form.address }}
-            </div>
-            <div class="mb-3">
-                {{ form.city.label_tag }}
-                {{ form.city }}
-            </div>
-            <div class="mb-3">
-                {{ form.zip_code.label_tag }}
-                {{ form.zip_code }}
-            </div>
-            <div class="mb-3">
-                {{ form.phone_number.label_tag }}
-                {{ form.phone_number }}
-            </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Register</button> <!--TECH DEBT: put css for line below in a css file eventually -->
-            </div>
-        </form>
-    </div>
+        {% endfor %}
+        <div class="form-group">
+            <button type="submit" class="btn-custom-green">Register</button>
+        </div>
+    </form>
+
+    <!-- Display form errors -->
+    {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    <li>{{ field }}: {{ errors|striptags }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
-

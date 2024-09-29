@@ -1,9 +1,44 @@
 {% extends 'Leaf/base.html' %}
 {% block content %}
-<h1>Add a New Product</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Product</button>
-</form>
+<style>
+    /* Apply a light beige background to the entire page */
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: ivory; /* Light beige color */
+        font-family: 'Patrician', serif;
+    }
+
+    /* Center the form and heading */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh; /* Full height of the viewport */
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: -50px; /* Adjust this value to move the title higher */
+    }
+
+    form {
+        text-align: center;
+    }
+
+    button {
+        margin-top: 10px; /* Adds a margin above the button */
+    }
+</style>
+
+<div class="center-container">
+    <h1>Add a New Product</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Product</button>
+    </form>
+</div>
 {% endblock %}

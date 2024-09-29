@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <style>
-        /* You can style this checkout page as needed */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             padding: 20px;
+            font-family: 'Patrician', serif;
         }
 
         .checkout-container {
-            background-color: #fff;
+            background-color: #E7F0E4;
             padding: 20px;
             margin: 0 auto;
             max-width: 600px;
@@ -33,7 +31,8 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #66C266;
+            background-color: #4F7942; /* Updated to forest green */
+            font-family: 'Patrician', serif;
             color: white;
             text-align: center;
             border: none;
@@ -43,7 +42,7 @@
         }
 
         .checkout-button:hover {
-            background-color: #558655;
+            background-color: #446838; /* Slightly darker shade for hover effect */
         }
     </style>
 </head>
@@ -55,7 +54,7 @@
     <p>Price: {{ product.price }}</p>
     <p>Seller: {{ product.seller.user.username }}</p>
 
-    <button class="checkout-button" onclick="window.location.href='{% url 'browse_products'  %}'">Return to Browsing</button>
+    <button class="checkout-button" onclick="window.location.href='{% url 'browse_products' %}'">Return to Browsing</button>
 </div>
 
 </body>

@@ -16,14 +16,14 @@
         }
 
         .navbar-nav {
-            margin-left: 5%;
+            margin-left: 10%;
         }
         .form-control {
             width: 300px;
         }
         .nav-item {
             padding: 5px 10px;
-            background-color: rgb(51, 148, 19);
+            background-color: #4F7942;
             border-radius: 15px;
             margin: 5px;
         }
@@ -31,20 +31,21 @@
             color: white;
         }
         .navbar-brand {
-            color: rgb(51, 148, 19);
+            color: #4F7942;
         }
         .filter-dropdown {
             margin-right: 5px;
+            margin-left: 3%;
         }
         /* Updated CSS to make the filter button green */
         .btn.btn-secondary.dropdown-toggle {
-            background-color: rgb(51, 148, 19);
-            border-color: rgb(51, 148, 19);
+            background-color: #4F7942;
+            border-color: #4F7942;
         }
         /* Style the Apply Filters button */
         .btn-apply-filters {
-            background-color: rgb(51, 148, 19);
-            border-color: rgb(51, 148, 19);
+            background-color: #4F7942;
+            border-color: #4F7942;
             color: white;
         }
 
@@ -55,6 +56,30 @@
         .dropdown-menu {
             margin-top: 0; /* Ensure the dropdown appears right below the item */
         }
+        .navbar-icon {
+            width: 30px;
+            height: 30px;
+        }
+        .brand-text {
+            color: rgb(101, 67, 33); /* This is a shade of brown (SaddleBrown) */
+        }
+        .navbar-icon {
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+            margin-right: 5px; /* Adds some space between the icon and text */
+        }
+        .btn-custom-green {
+            color: #4F7942;
+            border-color: #4F7942;
+            background-color: transparent;
+        }
+
+        .btn-custom-green:hover {
+            color: white;
+            background-color: #4F7942;
+            border-color: #4F7942;
+        }
+
     </style>
 </head>
 <body>
@@ -63,8 +88,8 @@
     <div class="container-fluid d-flex justify-content-between">
         <!-- Brand -->
         <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="% static 'images/logo.png' %" alt="Icon"> <!-- Placeholder for icon image link -->
-            Leaf & Loom</a>
+            <img src="/media/products/logo.png" alt="Icon" class="navbar-icon">
+            <span class="brand-text">Leaf & Loom</span></a>
 
         <!-- Filter Dropdown -->
         <div class="filter-dropdown">
@@ -100,7 +125,7 @@
         <!-- Search Bar -->
         <form class="d-flex search-bar" role="search" method="GET" action="{% url 'browse_products' %}">
             <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search" name="q">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-custom-green" type="submit">Search</button>
         </form>
 
         <!-- Navbar Links -->
@@ -110,10 +135,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
 
                 <!-- Market Place Dropdown (Hover) -->
                 <li class="nav-item dropdown">
@@ -125,8 +146,13 @@
                         <li><a class="dropdown-item" href="{% url 'add_product' %}">Add Product</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+
 
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+
             </ul>
         </div>
     </div>

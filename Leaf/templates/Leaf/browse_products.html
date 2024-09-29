@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Products</title>
     <style>
+        body {
+            font-family: 'Patrician', serif;
+        }
         .listholder {
             list-style: none; /* Remove bullet points */
             padding: 0;
@@ -17,7 +20,7 @@
         }
 
         lister {
-            background-color:   #66c266  ; /* Light background */
+            background-color:   beige  ; /* Light background */
             border: 1px solid #ddd; /* Light border */
             border-radius: 20px; /* Rounded corners for card effect */
             padding: 20px; /* Space inside the item */
@@ -31,7 +34,7 @@
 
         lister:hover {
             transform: scale(1.05);
-            background-color: rgb(51, 148, 19)   /* Slightly enlarges on hover */
+            background-color: #4F7942   /* Slightly enlarges on hover */
         }
 
         h2 {
@@ -67,16 +70,16 @@
                 <p>Price: {{ product.price }}</p>
                 <p>Seller: {{ product.seller.user.username }}</p> <!-- Displaying the seller's username -->
                 {% if product.carbon_footprint %}
-                    <p>✔️ Low Carbon Footprint</p>
+                    <p>✔ Low Carbon Footprint</p>
                 {% endif %}
                 {% if product.locally_made %}
-                    <p>✔️ Locally Made</p>
+                    <p>✔ Locally Made</p>
                 {% endif %}
                 {% if product.recyclable %}
-                    <p>✔️ Recyclable Materials</p>
+                    <p>✔ Recyclable Materials</p>
                 {% endif %}
                 {% if product.sustainable_packaging %}
-                    <p>✔️ Sustainable Packaging</p>
+                    <p>✔ Sustainable Packaging</p>
                 {% endif %}
 
             <button class="product-button" onclick="window.location.href='{% url 'checkout' product.id %}'">Buy Now</button>
